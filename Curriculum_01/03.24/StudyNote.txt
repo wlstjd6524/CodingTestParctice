@@ -1,0 +1,30 @@
+✍ 2026.03.23 학습 회고
+
+1. 정렬은 정렬인데, 이제 Lambda 를 추가한..
+    - sort() 함수에서 안에 인자값으로 'key=len' 식으로 부여하면 길이만큼 정렬이 되는 모습을 볼 수 있었음
+    - 근데 정렬 조건이 2가지 인 경우 이제 Lambda 를 추가해서 한 줄로 코드 경량화가 가능했음
+        ex)
+        word_list = ["apple", "it", "im", "banana", "it"]
+
+        # 중복 제거를 위해 set() 한번 감싸고 그걸 리스트로 다시
+        unique_words = list(set(word_list))
+
+        # 1순위는 길이로 정렬, 2순위는 단어순으로 정렬
+        unique_words.sort(key=lambda x: (len(x), x))
+
+
+2. 카운터로 구현하면서 자료구조 스택(Stack) 찍먹
+    - 괄호의 짝을 맞추는 문제에서 여는 괄호가 먼저 오고 닫는 괄호가 맞는 대칭구조에 대한 부분을 count 를 주고 빼면서 음수값이 되면 탈락 조건을
+    부여하는 식으로 구현하면 이게 추후에 배울 Stack 의 개념과 유사.
+
+    ex)
+    word = ")("
+    count = 0
+
+    for char in word:
+        if char == '(': count += 1
+        elif char == ')': count -= 1
+
+        if count < 0:
+            print("NO")
+            break
